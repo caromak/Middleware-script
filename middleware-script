@@ -1,0 +1,109 @@
+#!/bin/bash
+
+#Author: Caroline
+#Date: 20 June 2022
+
+
+## SonarQube installation Script
+
+## Sonarqube doesnt work when you start it  as root user
+
+echo " Make sure you login as a regular user"
+
+# Java installation
+
+# sudo yum update -y
+
+sudo yum install java-11-openjdk-devel -y
+
+sudo yum install java-11-openjdk -y
+
+if [ $? -eq 0 ]
+
+then
+
+then
+
+echo " Java was installed succesfully"
+
+else
+
+exit 2
+
+echo " Java need to be installed first"
+
+fi
+
+sleep 4
+
+
+## Download SonarQube latest versions on your server
+
+cd /opt
+
+sudo yum install wget -y
+
+sleep 4
+
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.3.0.51899.zip
+
+## Unzipping the previously installed package
+
+sudo unzip /opt/sonarqube-9.3.0.51899.zip
+
+sudo chown -R vagrant:vagrant /opt/sonarqube-9.3.0.51899
+
+if [ $? -eq 0 ]
+
+then
+
+echo " The user and group have been succesfully changed to vagrant"
+
+else
+
+exit 2
+
+echo " User and group need to be changed to vagrant first"
+
+fi
+
+sleep 4
+
+cd /opt/sonarqube-9.3.0.51899/bin/linux-x86-64
+
+./sonar.sh start
+
+if [ $? -eq 0 ]
+
+then
+
+echo "Sonarqube installed and started successfully"
+
+else
+
+exit 2
+
+echo " Sonarqube need to start succesfully to move on"
+
+fi
+
+sleep 4
+
+./sonar.sh status
+
+if [ $? -eq 0 ]
+
+then
+
+echo " Sonarqube is running succesfully"
+
+else exit 2
+
+echo " Sonarqube need to be running successfully to continue"
+
+fi
+
+echo " Java was installed succesfully"
+
+else
+
