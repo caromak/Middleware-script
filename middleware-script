@@ -97,7 +97,7 @@ then
 
 echo " Sonarqube is running succesfully"
 
-else exit 2
+else exit 1
 
 echo " Sonarqube need to be running successfully to continue"
 
