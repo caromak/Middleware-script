@@ -22,8 +22,6 @@ if [ $? -eq 0 ]
 
 then
 
-then
-
 echo " Java was installed succesfully"
 
 else
