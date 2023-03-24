@@ -8,6 +8,8 @@
 
 ## Sonarqube doesnt work when you start it  as root user
 
+## Scripts
+
 echo " Make sure you login as a regular user"
 
 # Java installation
